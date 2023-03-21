@@ -1,0 +1,66 @@
+matrix:
+  include:
+  - language: ruby
+    name: "Bundler (rvm 2.4.4 & bundler 1.17.3)"
+    rvm: 2.4.4
+    before_install:
+      - gem install bundler -v 1.17.3
+  - language: ruby
+    name: "Bundler (rvm 2.4.4 & bundler 2.0.1)"
+    rvm: 2.4.4
+    before_install:
+      - gem install bundler -v 2.0.1
+  - language: ruby
+    name: "Bundler (rvm 2.5.3 & bundler 2.0.1)"
+    rvm: 2.5.3
+    before_install:
+      - gem install bundler -v 2.0.1
+  - language: ruby
+    name: "Bundler (rvm 2.6.1 & bundler 2.0.1)"
+    rvm: 2.6.1
+    before_install:
+      - gem install bundler -v 2.0.1
+  - language: ruby
+    name: "Rubocop (rvm 2.4.4)"
+    env: SKIP_INTERPRETER=true
+    rvm: 2.4.4
+    before_install:
+      - git clone https://github.com/TravisToolbox/rubocop-travis.git
+    install:
+      - ./rubocop-travis/install.sh
+    script:
+      - ./rubocop-travis/scan.sh
+  - language: ruby
+    name: "Rubocop (rvm 2.5.3)"
+    env: SKIP_INTERPRETER=true
+    rvm: 2.5.3
+    before_install:
+      - git clone https://github.com/TravisToolbox/rubocop-travis.git
+    install:
+      - ./rubocop-travis/install.sh
+    script:
+      - ./rubocop-travis/scan.sh
+  - language: ruby
+    name: "Rubocop (rvm 2.6.1)"
+    env: SKIP_INTERPRETER=true
+    rvm: 2.6.1
+    before_install:
+      - git clone https://github.com/TravisToolbox/rubocop-travis.git
+    install:
+      - ./rubocop-travis/install.sh
+    script:
+      - ./rubocop-travis/scan.sh
+  - language: ruby
+    name: "Link Checker (rvm 2.6.1)"
+    rvm: 2.6.1
+    before_install:
+      - mkdir travis
+      - git clone https://github.com/TravisToolbox/awesomebot-travis.git travis/awesomebot
+    install:
+      - ./travis/awesomebot/install.sh
+    script:
+      - ./travis/awesomebot/scan.sh
+notifications:
+  email: false
+  slack:
+    secure: u3UC7xkXbiXgWeWkay1G2VBNzUfa6FUvLK4LtkxiaYeF/Y7uQ9As8EZ/0xeTHpr014XY8zTNwdYVntp5hBASxuH+43sWZKIeCRy0YxtQ97f6/0mRSKUVul73XvYcHMns/42Ho17OcAae70r9I59zKJSSz4I9+QnSkoCn1CgYzXGw8u4C9+WLxIbXyG7bKFwhsiIsHOJiBgWy+V9QG5tZfvlQwMwIAlQ0dkwiIkQ3DMq2NpCawFhL0as8f6VatJZMU+D3CG9EU28965rdrivAZ1emJky5HFJ/ZKeacTtbDijFTpeFS7G6ZH+4LavdyFjWCH3hsdIgQ3AhL/F/JjioIIOL6U9pnJbmnihHaxLM/l9wOovmmbjoe/mZPmTtdoUUebY1RBeAp+3l5xz4HOb8zIaPDoejMs75gysXboXQSSLW6oga6XKUNBLyf8PNc5KowoLh2Q2CZV0HyJHwlp3jCUA2E5cL04iGaLpcDTP+vm4zrHD4ICd89EQumyXesowxcyahWTPlH5+CxHSxsJ66peRHHqEW4Si9zR0ssWjmhfzGcoIfMVwPOFwOG/qxvxFAM24tCyOwaSmW1vQXSVFsZ7FHap+lG9yKOKV9Q2ZBREPX0pAJ8ST6zVE6Q4ppOv7t8nGALhjSsXzIOoWqfZdvH0ktyJYo6bpEw/e8YdmRfw8=
